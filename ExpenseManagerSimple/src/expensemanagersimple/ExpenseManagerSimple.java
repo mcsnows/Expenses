@@ -26,22 +26,24 @@ public class ExpenseManagerSimple {
       
       
       public static void main(String[] args){
-//              IExpenseTypeRepository ExpTRepo=PersistenceFactory.getInstance().buildRepositoryFactory().getExpenseTypeRepository();
-//              ExpenseType eT=new ExpenseType("TesteJPA2");
-//              ExpTRepo.saveExpenseType(eT);
-//              List<ExpenseType> list=ExpTRepo.getAllExpenseTypes();
-//              for(ExpenseType e: list){
-//                    System.out.println("ET:"+e);
-//              }
-//              System.out.println("Size"+list.size());
+              IExpenseTypeRepository ExpTRepo=PersistenceFactory.getInstance().buildRepositoryFactory().getExpenseTypeRepository();
+              ExpenseType eT=new ExpenseType("TesteJPA2");
+              ExpTRepo.saveExpenseType(eT);
+              List<ExpenseType> list=ExpTRepo.getAllExpenseTypes();
+              for(ExpenseType e: list){
+                    System.out.println("ET:"+e);
+              }
+              System.out.println("Size"+list.size());
+              
+              
                    IExpenseRepository ExpRepo=PersistenceFactory.getInstance().buildRepositoryFactory().getExpenseRepository();
               Expense e=new Expense("mesa", DateTime.newDate(2013, 4, 30), new BigDecimal(33), new ExpenseType("outranova"));
               ExpRepo.saveExpense(e);
-              List<Expense> list=ExpRepo.getAllExpenses();
-              for(Expense exp: list){
+              List<Expense> list1=ExpRepo.getAllExpenses();
+              for(Expense exp: list1){
                     System.out.println("Expense:"+exp);
               }
-              System.out.println("Size"+list.size());
+              System.out.println("Size"+list1.size());
             }
       
       
