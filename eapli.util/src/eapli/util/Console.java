@@ -5,11 +5,9 @@
 package eapli.util;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,17 +64,6 @@ public class Console {
         } while (true);
     }
 
-    static public int readOption(int low, int high, int exit) {
-        int option;
-        do
-        {
-            option = Console.readInteger("Introduza opção: ");
-            if (option == exit)
-                break;
-        } while (option < low || option > high);
-        return option;
-    }
-    
     static public Date readDate(String prompt) {
         do {
             try {
@@ -85,22 +72,6 @@ public class Console {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
                 Date date = df.parse(strDate);
-
-                return date;
-            } catch (ParseException ex) {
-                Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } while (true);
-    }
-
-    static public Calendar readCalendar(String prompt) {
-        do {
-            try {
-                String strDate = readLine(prompt);
-
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-
-                Calendar date = DateTime.dateToCalendar(df.parse(strDate));
 
                 return date;
             } catch (ParseException ex) {
@@ -121,14 +92,5 @@ public class Console {
                 Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
             }
         } while (true);
-    }
-
-    public static void waitForKey(String prompt) {
-        System.out.println(prompt);
-        try {
-        System.in.read();
-        } catch(IOException ex) {
-                Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);            
-        }
     }
 }
