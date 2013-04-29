@@ -1,0 +1,12 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/ExpenseManagerSimple/nbproject/private/
+/ExpenseManagerSimple/build/
+/ExpenseManagerSimple/dist/
+/eapli.util/private/
+/eapli.util/build/
+/eapli.util/dist/
