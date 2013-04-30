@@ -4,14 +4,18 @@
  */
 package expensemanagersimple;
 
+import Model.Cash;
+import Model.DebitCard;
 import Model.Expense;
 import Model.ExpenseType;
+import Model.PaymentMeans;
 import eapli.util.DateTime;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import persistence.IExpenseRepository;
 import persistence.IExpenseTypeRepository;
+import persistence.IPaymentMeansRepository;
 import persistence.PersistenceFactory;
 
 /**
@@ -27,7 +31,7 @@ public class ExpenseManagerSimple {
       
       public static void main(String[] args){
               IExpenseTypeRepository ExpTRepo=PersistenceFactory.getInstance().buildRepositoryFactory().getExpenseTypeRepository();
-              ExpenseType eT=new ExpenseType("TesteJPA2");
+              ExpenseType eT=new ExpenseType("Vestuário");
               ExpTRepo.saveExpenseType(eT);
               List<ExpenseType> list=ExpTRepo.getAllExpenseTypes();
               for(ExpenseType e: list){
@@ -36,8 +40,22 @@ public class ExpenseManagerSimple {
               System.out.println("Size"+list.size());
               
               
+              IPaymentMeansRepository pMRepo=PersistenceFactory.getInstance().buildRepositoryFactory().getPaymentMeansRepository();
+              PaymentMeans pM1=new Cash();
+              pMRepo.savePaymentMeans(pM1);
+              PaymentMeans pM2=new DebitCard("BPA","12345");
+              pMRepo.savePaymentMeans(pM2);
+              List<PaymentMeans> list2=pMRepo.getAllPaymentMeans();
+              for(PaymentMeans p: list2){
+                    System.out.println("PM:"+p);
+              }
+              System.out.println("Size"+list2.size());
+              
+              
+              
+              
                    IExpenseRepository ExpRepo=PersistenceFactory.getInstance().buildRepositoryFactory().getExpenseRepository();
-              Expense e=new Expense("mesa", DateTime.newDate(2013, 4, 30), new BigDecimal(33), new ExpenseType("outranova"));
+              Expense e=new Expense("mesa", DateTime.newDate(2013, 4, 30), new BigDecimal(33), new ExpenseType("Mobiliário"),new DebitCard("BPI","9999"));
               ExpRepo.saveExpense(e);
               List<Expense> list1=ExpRepo.getAllExpenses();
               for(Expense exp: list1){

@@ -19,6 +19,10 @@ public class JpaRepositoryFactory  implements IRepositoryFactory{
       public IExpenseTypeRepository getExpenseTypeRepository(){
             return new persistence.jpa.ExpenseTypeJpa();
       }
+   @Override
+      public IPaymentMeansRepository getPaymentMeansRepository(){
+            return new persistence.jpa.PaymentMeansJpa();
+      }
   
  
 }

@@ -11,4 +11,6 @@ package persistence;
 public interface IRepositoryFactory {
       IExpenseTypeRepository getExpenseTypeRepository();
       IExpenseRepository getExpenseRepository();
+      IPaymentMeansRepository getPaymentMeansRepository();
+      
 }

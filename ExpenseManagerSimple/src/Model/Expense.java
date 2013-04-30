@@ -4,6 +4,7 @@
  */
 package Model;
 
+import eapli.util.DateTime;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -30,13 +31,14 @@ public class Expense implements Serializable {
       private BigDecimal amount;
        @ManyToOne(cascade = CascadeType.ALL)
       private ExpenseType expenseType;
-      //private PaymentMeans paymentMeans;
+       
+      private PaymentMeans paymentMeans;
       @Temporal(javax.persistence.TemporalType.DATE)
       private Date dateOccurred;
 
     
     protected Expense() {}
-    /*
+
     public Expense( String description, Date dateOccurred, BigDecimal amount) {
         if (description == null || dateOccurred == null || amount == null) {
             throw new IllegalArgumentException("description or date or amount null");
@@ -78,7 +80,7 @@ public class Expense implements Serializable {
           this.paymentMeans=exp.paymentMeans;
           this.dateOccurred=exp.dateOccurred;
     }
-   */
+   
     
     public Expense(String description,Date dateOccurred, BigDecimal amount,ExpenseType expenseType
             // ,PaymentMeans paymentMeans

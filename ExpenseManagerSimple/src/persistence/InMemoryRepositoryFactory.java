@@ -22,6 +22,9 @@ public class InMemoryRepositoryFactory implements IRepositoryFactory{
             return new persistence.inmemory.ExpenseTypeRepository();
       }
      
-
+ @Override
+      public IPaymentMeansRepository getPaymentMeansRepository(){
+            return new persistence.inmemory.PaymentMeansRepository();
+      }
       
 }
